@@ -1,0 +1,46 @@
+type Query {
+    info: String!
+    feed: [Link!]!
+    link(id: ID!): Link
+}
+
+type Mutation {
+    """
+    Post - Add new item
+    updateLink - update link given an ID and update parameters
+    delete - delete an item given an ID
+    """
+    post(url: String!, description: String!): Link!
+    signup(name: String!, email: String!, password: String!): AuthPayLoad
+    login(email: String!, password: String!): AuthPayLoad
+
+    updateLink(id: ID!, url: String, description: String): Link
+    deleteLink(id: ID!): Link
+}
+
+"""
+schema for subscriptions
+"""
+
+type Subscription {
+    newLink: Link
+}
+
+type Link {
+    id: ID!
+    description: String!
+    url: String!
+    postedBy: User
+}
+
+type AuthPayLoad {
+    token: String
+    user: User
+}
+
+type User {
+    id: ID!
+    name: String
+    email: String
+    links: [Link!]!
+}
