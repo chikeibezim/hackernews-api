@@ -4,11 +4,14 @@ const fs = require("fs");
 const path = require("path");
 const { getUserId } = require('./utils')
 
+
+//import resolvers
 const Query = require("./resolvers/Query")
 const Mutation = require("./resolvers/Mutation")
 const User = require("./resolvers/User")
 const Link = require("./resolvers/Link")
 const Subscription = require("./resolvers/Subscription")
+const Vote = require("./resolvers/Vote")
 
 let prisma = new PrismaClient();
 
@@ -21,6 +24,7 @@ const resolvers = {
     Subscription,
     User,
     Link,
+    Vote
     /* we could add the resolver functions for the Link type as follows
         id: (parent) => parent.id,
         description: (parent) => parent.description,

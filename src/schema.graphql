@@ -13,9 +13,10 @@ type Mutation {
     post(url: String!, description: String!): Link!
     signup(name: String!, email: String!, password: String!): AuthPayLoad
     login(email: String!, password: String!): AuthPayLoad
+    vote(linkId: ID!): Vote
 
-    updateLink(id: ID!, url: String, description: String): Link
-    deleteLink(id: ID!): Link
+    # updateLink(id: ID!, url: String, description: String): Link
+    # deleteLink(id: ID!): Link
 }
 
 """
@@ -23,7 +24,8 @@ schema for subscriptions
 """
 
 type Subscription {
-    newLink: Link
+    newLink: Link,
+    newVote: Vote
 }
 
 type Link {
@@ -31,6 +33,7 @@ type Link {
     description: String!
     url: String!
     postedBy: User
+    votes: [Vote!]!
 }
 
 type AuthPayLoad {
@@ -43,4 +46,10 @@ type User {
     name: String
     email: String
     links: [Link!]!
+}
+
+type Vote {
+    id: ID!
+    link: Link!
+    user: User!
 }
