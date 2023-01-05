@@ -1,6 +1,7 @@
+##filter was added to feed to fetch data with specific filter
 type Query {
     info: String!
-    feed: [Link!]!
+    feed(filter: String): [Link!]!
     link(id: ID!): Link
 }
 
