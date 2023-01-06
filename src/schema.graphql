@@ -1,7 +1,8 @@
 ##filter was added to feed to fetch data with specific filter
+##pagination for the feed was also included via skip and take
 type Query {
     info: String!
-    feed(filter: String): [Link!]!
+    feed(filter: String, skip: Int, take: Int): [Link!]!
     link(id: ID!): Link
 }
 
@@ -53,4 +54,16 @@ type Vote {
     id: ID!
     link: Link!
     user: User!
+}
+
+##implement sorting
+input LinkOrderByInput {
+    description: Sort
+    url: Sort
+    createdAt: Sort
+}
+
+enum Sort {
+    asc
+    desc
 }
