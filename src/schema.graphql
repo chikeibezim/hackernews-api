@@ -2,7 +2,7 @@
 ##pagination for the feed was also included via skip and take
 type Query {
     info: String!
-    feed(filter: String, skip: Int, take: Int): [Link!]!
+    feed(filter: String, skip: Int, take: Int, orderBy: LinkOrderByInput): [Link!]!
     link(id: ID!): Link
 }
 
@@ -34,6 +34,7 @@ type Link {
     id: ID!
     description: String!
     url: String!
+    createdAt: String
     postedBy: User
     votes: [Vote!]!
 }
