@@ -2,7 +2,7 @@
 ##pagination for the feed was also included via skip and take
 type Query {
     info: String!
-    feed(filter: String, skip: Int, take: Int, orderBy: LinkOrderByInput): [Link!]!
+    feed(filter: String, skip: Int, take: Int, orderBy: LinkOrderByInput): Feed!
     link(id: ID!): Link
 }
 
@@ -57,6 +57,14 @@ type Vote {
     user: User!
 }
 
+##schema type for Feed to return feeds and feeds count
+
+type Feed {
+    links: [Link!]!
+    count: Int!
+}
+
+
 ##implement sorting
 input LinkOrderByInput {
     description: Sort
@@ -68,3 +76,4 @@ enum Sort {
     asc
     desc
 }
+
