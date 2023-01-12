@@ -47,7 +47,7 @@ const server = new ApolloServer({
     resolvers,
     //to access a request object on the context, we attach a request object to the context
     //advantage of this approach is that we can attach HTTP request that carries the incoming GraphQL query or
-    //mutation to the context as well. This will allow resolvers to read Authorization header and validare
+    //mutation to the context as well. This will allow resolvers to read Authorization header and validate
     //if the user who submitted the request is eligible to perform the requested operation
     context: ({ req }) => {
         return{
